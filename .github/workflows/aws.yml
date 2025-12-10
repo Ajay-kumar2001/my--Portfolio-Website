@@ -54,7 +54,7 @@ jobs:
             sudo mkdir /temp/rreact-build
             sudo scp dist/* /temp/rreact-build
             sudo cp -r /temp/react-build/* ${{ secrets.EC2_PATH }}/
-            sudo rm -rf /temp/react-build
+            
           EOF
 
       - name: Restart server with PM2

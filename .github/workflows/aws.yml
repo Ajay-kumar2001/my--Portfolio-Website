@@ -47,7 +47,7 @@ jobs:
 
       - name: Transfer build to Server
         run: |
-          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "sudo mkdir -p /temp/react-build && sudo chmod -R 777 ~/react-build"
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "sudo mkdir -p /temp/react-build && sudo chmod -R 777 /temp/react-build"
           scp -o StrictHostKeyChecking=no -i private_key.pem -r dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/temp/react-build/
 
       - name: Deploy on server

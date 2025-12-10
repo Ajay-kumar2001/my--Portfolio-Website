@@ -50,8 +50,8 @@ jobs:
       - name: deploy the build 
         run: |
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            sudo rm -rf ${{ secrets.EC2_PATH }}/*
-            sudo mkdir /temp/react_app
+            sudo rm -rf ${{ secrets.EC2_PATH }}/
+            sudo mkdir /temp/rreact-build
             sudo scp dist/* /temp/rreact-build
             sudo cp -r /temp/react-build/* ${{ secrets.EC2_PATH }}/
             sudo rm -rf /temp/react-build

@@ -1,47 +1,61 @@
+name: deploying react app to server
 
-name: dyploying react app to server
-on :
-push:
-branch : ["test"]
+on:
+  push:
+    branches: ["test"]
+
 jobs:
- bulid:
-  runs-on: ubuntu-latest
-  steps:
-  -name: checkout the code
-  uses: actions/checkout@v4
-  -name: set node enverment
-  uses : actions/set-node@v4
-  with :
-  node-version: 18
-  -name : install dependances 
-   npm ci
-  -name : running the build 
-   npm run build
-  -name :  uplode the react build atifacter 
-  uses : action/upload-atifacter@v4
-  with: 
-   path: dist
-dyploying:
-runs-on : ubuntu-latest 
-needs: build
--name : download atifacter
-users : download-artifact@v4
-with: 
-name : react-build
-path : build
+  build:
+    runs-on: ubuntu-latest
 
--name : set up ssh key
- echo "${{secrets.EC2_KEY}}" >private_key.pem
- chmod 600 private_key
--name : copying the build to the server  
- scp -i private_key.pem -r build/* \${{secrets.EC2_USER}}@${{secrets.EC2_HOST}} ${{secrets.EC2_PATH}}
--name : restarting the server
- ssh -i private_key.pem ${{secrets.EC2_USER}}@{{secrets.EC2_HOST}} <<EOF
- cd ${{secrets.EC2_PATH}}
- pm2 stop react App || true
- pm2 delete react App || true
- pm2 serve  . 3000 --spa --name "react App"
- pm2 save
- EOF
-  
-  
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Set Node environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Running the build
+        run: npm run build
+
+      - name: Upload the React build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-build
+          path: build
+
+  deploying:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: react-build
+          path: build
+
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.EC2_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+      - name: Copy build to server
+        run: |
+          scp -o StrictHostKeyChecking=no -i private_key.pem -r build/* \
+          ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_PATH }}
+
+      - name: Restart server with PM2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            cd ${{ secrets.EC2_PATH }}
+            pm2 stop "react_app" || true
+            pm2 delete "react_app" || true
+            pm2 serve . 3000 --spa --name "react_app"
+            pm2 save
+          EOF

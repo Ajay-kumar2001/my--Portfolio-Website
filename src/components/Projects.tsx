@@ -255,11 +255,11 @@ const Projects = () => {
           </div>
 
           {/* View More Projects */}
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 font-medium">
               View All Projects on GitHub
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

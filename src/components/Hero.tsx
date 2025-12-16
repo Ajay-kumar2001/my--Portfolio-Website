@@ -54,8 +54,8 @@ const Hero = () => {
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                3 years of experience in designing and developing scalable web applications using MERN stack, 
-                and cloud platforms like AWS. Proficient in backend development with Node.js, and integration 
+                3 years of experience in designing and developing scalable web applications using MERN stack,
+                and cloud platforms like AWS. Proficient in backend development with Node.js, and integration
                 of cloud services and third-party APIs.
               </p>
 
@@ -66,15 +66,19 @@ const Hero = () => {
                 >
                   Get In Touch
                 </button>
-                <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 font-medium flex items-center space-x-2">
+                <a
+                  href="/Ajay kumar Bandari-new.docx"   // file path (public folder)
+                  download
+                  className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 font-medium flex items-center space-x-2"
+                >
                   <Download size={18} />
                   <span>Download CV</span>
-                </button>
+                </a>
               </div>
 
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/Ajay-kumar2001" target='_blank'rel='noopener noreferer'
+                  href="https://github.com/Ajay-kumar2001" target='_blank' rel='noopener noreferer'
                   className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-gray-700 hover:text-blue-600"
                 >
                   <Github size={24} />

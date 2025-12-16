@@ -128,10 +128,10 @@ const Experience = () => {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '2.5+', label: 'Years Experience' },
+              { value: '3', label: 'Years Experience' },
               { value: '5+', label: 'Major Projects' },
               { value: '10+', label: 'Technologies' },
-              { value: '3+', label: 'Cloud Platforms' },
+              { value: '2', label: 'Cloud Platforms' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">{stat.value}</div>

@@ -23,39 +23,41 @@ jobs:
       - name: Running the build
         run: npm run build
 
-      - name: Upload the React build artifact
+      - name: Upload React build artifact
         uses: actions/upload-artifact@v4
         with:
           name: react-build
-          path: build
+          path: dist/
 
   deploying:
     runs-on: ubuntu-latest
     needs: build
 
     steps:
-      - name: Download artifact
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: react-build
-          path: build
+          path: dist
 
-      - name: Set up SSH key
+      - name: Setup SSH key
         run: |
           echo "${{ secrets.EC2_KEY }}" > private_key.pem
           chmod 600 private_key.pem
 
-      - name: Copy build to server
+      - name: Transfer build to Server
         run: |
-          scp -o StrictHostKeyChecking=no -i private_key.pem -r build/* \
-          ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_PATH }}
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "sudo mkdir -p /temp/react-build && sudo chmod -R 777 /temp/react-build"
+          scp -o StrictHostKeyChecking=no -i private_key.pem -r dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/temp/react-build/
 
-      - name: Restart server with PM2
+      - name: Deploy on server
         run: |
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            sudo rm -rf ${{ secrets.EC2_PATH }}/*
+            sudo cp -r /temp/react-build/* ${{ secrets.EC2_PATH }}/      
             cd ${{ secrets.EC2_PATH }}
-            pm2 stop "react_app" || true
-            pm2 delete "react_app" || true
-            pm2 serve . 3000 --spa --name "react_app"
+            pm2 stop react_app || true
+            pm2 delete react_app || true
+            pm2 serve . 3000 --spa --name react_app
             pm2 save
           EOF

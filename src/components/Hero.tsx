@@ -54,8 +54,8 @@ const Hero = () => {
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                2.5+ years of experience in designing and developing scalable web applications using MERN stack, 
-                and cloud platforms like Azure. Proficient in backend development with Node.js, and integration 
+                3 years of experience in designing and developing scalable web applications using MERN stack, 
+                and cloud platforms like AWS. Proficient in backend development with Node.js, and integration 
                 of cloud services and third-party APIs.
               </p>
 
@@ -74,13 +74,13 @@ const Hero = () => {
 
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://github.com/Ajay-kumar2001" target='_blank'rel='noopener noreferer'
                   className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-gray-700 hover:text-blue-600"
                 >
                   <Github size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/ajay-kumar-bandari-b70007222/" target='_blank' rel='noopener noreferer'
                   className="p-3 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-gray-700 hover:text-blue-600"
                 >
                   <Linkedin size={24} />
@@ -96,7 +96,7 @@ const Hero = () => {
                   <div className="w-80 h-80 bg-gradient-to-br from-blue-100 to-teal-100 rounded-full absolute top-4 left-4"></div>
                   <div className="w-80 h-80 bg-white rounded-full shadow-xl relative z-10 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-6xl font-bold text-blue-600">2.5+</div>
+                      <div className="text-6xl font-bold text-blue-600">3</div>
                       <div className="text-xl text-gray-700 font-medium">Years</div>
                       <div className="text-gray-600">Experience</div>
                     </div>
@@ -109,7 +109,7 @@ const Hero = () => {
                 <span className="text-sm font-medium text-gray-700">MERN Stack</span>
               </div>
               <div className="absolute bottom-10 right-10 bg-white px-4 py-2 rounded-full shadow-lg border border-gray-100 animate-bounce" style={{ animationDelay: '0.5s' }}>
-                <span className="text-sm font-medium text-gray-700">Azure Cloud</span>
+                <span className="text-sm font-medium text-gray-700">AWS Cloud</span>
               </div>
               <div className="absolute top-32 right-0 bg-white px-4 py-2 rounded-full shadow-lg border border-gray-100 animate-bounce" style={{ animationDelay: '1s' }}>
                 <span className="text-sm font-medium text-gray-700">DevOps</span>

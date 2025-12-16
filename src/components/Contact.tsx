@@ -52,13 +52,13 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: '#',
+      href: 'https://github.com/Ajay-kumar2001',
       color: 'hover:text-gray-900',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: '#',
+      href: 'https://www.linkedin.com/in/ajay-kumar-bandari-b70007222/',
       color: 'hover:text-blue-600',
     },
     {

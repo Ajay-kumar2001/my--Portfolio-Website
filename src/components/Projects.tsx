@@ -8,6 +8,7 @@ const Projects = () => {
       description: 'Comprehensive mailing and emailing platform with notes, daily planners, event scheduling, email encryption, and file management.',
       type: 'Full-Stack Application',
       duration: '6 months',
+      projectUrl: "https://www.thapala.com/",
       team: '3 developers',
       responsibilities: [
         'Led backend development and system design',
@@ -36,6 +37,7 @@ const Projects = () => {
       type: 'Enterprise Application',
       duration: '8 months',
       team: '5 developers',
+      projectUrl: "https://dosen.io/",
       responsibilities: [
         'System design and architecture planning',
         'Backend development and implementation',
@@ -63,6 +65,7 @@ const Projects = () => {
       type: 'AI/ML Application',
       duration: '4 months',
       team: '2 developers',
+      projectUrl: "https://www.stellarglobal.com/",
       responsibilities: [
         'ZOHO CRM & Books integration',
         'Custom Flowise tool development',
@@ -89,6 +92,8 @@ const Projects = () => {
       type: 'Backend System',
       duration: '3 months',
       team: '2 developers',
+      projectUrl: "https://www.thapala.com/",
+      gutHubUrl: "",
       responsibilities: [
         'Backend API development and maintenance',
         'Razorpay payment integration',
@@ -113,6 +118,7 @@ const Projects = () => {
       type: 'E-Commerce Platform',
       duration: '7 months',
       team: '4 developers',
+      projectUrl: "https://elgdiamonds.ahexlab.com/",
       responsibilities: [
         'Backend development and architecture',
         'Third-party inventory integration (RightCliq & VDB)',
@@ -156,7 +162,7 @@ const Projects = () => {
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
               >
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
-                
+
                 <div className="p-8 lg:p-12">
                   <div className="grid lg:grid-cols-3 gap-8">
                     {/* Project Header */}
@@ -202,15 +208,27 @@ const Projects = () => {
 
                       {/* Project Actions */}
                       <div className="flex flex-wrap gap-4">
-                        <button className="flex items-center space-x-2 px-6 py-2 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg hover:shadow-lg transition-all duration-200">
+                        {/* <a
+                          href={project.gutHubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 px-6 py-2 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg"
+                        >
                           <Github size={18} />
                           <span>View Code</span>
-                        </button>
-                        <button className="flex items-center space-x-2 px-6 py-2 border-2 border-gray-700 text-gray-700 rounded-lg hover:bg-gray-700 hover:text-white transition-all duration-200">
+                        </a> */}
+
+                        <a
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 px-6 py-2 border-2 border-gray-700 text-gray-700 rounded-lg hover:bg-gray-700 hover:text-white"
+                        >
                           <ExternalLink size={18} />
                           <span>Live Demo</span>
-                        </button>
+                        </a>
                       </div>
+
                     </div>
 
                     {/* Technologies */}

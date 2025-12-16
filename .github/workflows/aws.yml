@@ -54,12 +54,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             sudo rm -rf ${{ secrets.EC2_PATH }}/*
-            sudo cp -r /temp/react-build/* ${{ secrets.EC2_PATH }}/
-          EOF
-
-      - name: Restart server with PM2
-        run: |
-          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            sudo cp -r /temp/react-build/* ${{ secrets.EC2_PATH }}/      
             cd ${{ secrets.EC2_PATH }}
             pm2 stop react_app || true
             pm2 delete react_app || true

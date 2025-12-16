@@ -6,7 +6,7 @@ const About = () => {
     {
       icon: Award,
       title: 'Expert Backend Developer',
-      description: 'Specialized in Node.js, TypeScript, and cloud integration with 2.5+ years of hands-on experience.',
+      description: 'Specialized in Node.js, TypeScript, and cloud integration with 3 years of hands-on experience.',
     },
     {
       icon: Target,
@@ -60,7 +60,7 @@ const About = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Professional Summary</h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  As a Full Stack Developer with over 2.5 years of experience, I specialize in building robust, 
+                  As a Full Stack Developer with over 3 years of experience, I specialize in building robust, 
                   scalable web applications using the MERN stack and modern cloud platforms. My expertise spans 
                   across backend development with Node.js, cloud integration with Azure and AWS, and implementing 
                   CI/CD practices.
